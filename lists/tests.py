@@ -86,6 +86,7 @@ class HomePageTest(TestCase):
         second_saved_item = saved_items[1]
         self.assertEqual(first_saved_item.text, 'The first (ever) list item')
         self.assertEqual(second_saved_item.text, 'Item the second') '''
+        
 class ListAndItemModelsTest(TestCase):
     def test_saving_and_retrieving_items(self):
         list_ = List()
@@ -114,7 +115,7 @@ class ListAndItemModelsTest(TestCase):
         self.assertEqual(second_saved_item.text, 'Item the second')
         self.assertEqual(second_saved_item.list, list_)
 
-class LiveViewTest(TestCase):
+class ListViewTest(TestCase):
     def test_displays_all_items(self):
         list_ = List.objects.create()
         Item.objects.create(text='itemey 1', list=list_)
@@ -128,7 +129,7 @@ class LiveViewTest(TestCase):
         response = self.client.get('/lists/the-only-list-in-the-world/')
         self.assertTemplateUsed(response, 'list.html')
 
-class NewLiveTest(TestCase):
+''' class NewLiveTest(TestCase):
     def test_can_save_a_POST_request(self):
         list_ = List.objects.create()
         Item.objects.create(text='itemey 1', list=list_)
@@ -143,4 +144,4 @@ class NewLiveTest(TestCase):
         response = self.client.post('/lists/new', data={'item_text': 'A new list item'})
         self.assertRedirects(response,'/lists/the-only-list-in-the-world/')
         #self.assertEqual(response.status_code, 302)
-        #self.assertEqual(response['location'], '/lists/the-only-list-in-the-world/')
+        #self.assertEqual(response['location'], '/lists/the-only-list-in-the-world/') '''
