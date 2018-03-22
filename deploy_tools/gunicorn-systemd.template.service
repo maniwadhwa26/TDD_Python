@@ -1,0 +1,19 @@
+[Unit] 
+Description=Gunicorn server for 139.59.86.121 
+
+[Service] 
+Restart=on-failure 
+
+User=mani 
+
+WorkingDirectory=/home/mani/sites/techlimitless.info 
+
+
+EnvironmentFile=/home/mani/sites/techlimitless.info/.env 
+
+ExecStart=/home/mani/sites/techlimitless.info/virtualenv/bin/gunicorn \
+    --bind unix:/tmp/139.59.86.121.socket \
+    superlists.wsgi:application 
+
+[Install]
+WantedBy=multi-user.target 
