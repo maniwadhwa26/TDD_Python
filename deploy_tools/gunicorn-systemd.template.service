@@ -1,18 +1,18 @@
 [Unit] 
-Description=Gunicorn server for 139.59.86.121 
+Description=Gunicorn server for DOMAIN 
 
 [Service] 
 Restart=on-failure 
 
 User=mani 
 
-WorkingDirectory=/home/mani/sites/techlimitless.info 
+WorkingDirectory=/home/mani/sites/DOMAIN 
 
 
-EnvironmentFile=/home/mani/sites/techlimitless.info/.env 
+EnvironmentFile=/home/mani/sites/DOMAIN/.env 
 
 ExecStart=/home/mani/sites/techlimitless.info/virtualenv/bin/gunicorn \
-    --bind unix:/tmp/139.59.86.121.socket \
+    --bind unix:/tmp/DOMAIN.socket \
     superlists.wsgi:application 
 
 [Install]
