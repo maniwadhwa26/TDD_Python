@@ -11,7 +11,7 @@ WorkingDirectory=/home/mani/sites/DOMAIN
 
 EnvironmentFile=/home/mani/sites/DOMAIN/.env 
 
-ExecStart=/home/mani/sites/techlimitless.info/virtualenv/bin/gunicorn \
+ExecStart=/home/mani/sites/DOMAIN/virtualenv/bin/gunicorn \
     --bind unix:/tmp/DOMAIN.socket \
     superlists.wsgi:application 
 
