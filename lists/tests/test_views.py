@@ -148,12 +148,12 @@ class ListViewTest(TestCase):
         )
         self.assertRedirects(response, f'/lists/{correct_list.id}/')
 
-     def test_can_save_a_POST_request_to_an_existing_list(self):
-            other_list = List.objects.create()
+    def test_can_save_a_POST_request_to_an_existing_list(self):
+        other_list = List.objects.create()
         correct_list = List.objects.create()
 
         self.client.post(
-            f'/lists/{correct_list.id}/add_item',
+            f'/lists/{correct_list.id}/',
             data={'item_text': 'A new item for an existing list'}
         )
 
@@ -200,7 +200,7 @@ class NewListTest(TestCase):
         expected_error = escape("You can't have an empty list item")
         self.assertContains(response, expected_error)
     
-     def test_invalid_list_items_arent_saved(self):
+    def test_invalid_list_items_arent_saved(self):
         self.client.post('/lists/new', data={'item_text': ''})
         self.assertEqual(List.objects.count(), 0)
         self.assertEqual(Item.objects.count(), 0)
